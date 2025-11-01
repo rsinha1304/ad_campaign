@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Ad Campaign Performance Predictor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Interactive Ad Campaign Performance Predictor</h1>
+      <div class="muted">Add products, simulate campaign data, and forecast performance</div>
+    </div>
+    <div class="muted">Sample project • Save as <code>index.html</code> and open in browser</div>
+  </header>
+
+  <main class="layout">
+    <aside class="card">
+      <h2>Products</h2>
+      <div>
+        <label class="muted">Add new product</label>
+        <input id="prodName" placeholder="Product name" />
+        <input id="prodPrice" placeholder="Price" />
+        <textarea id="prodDesc" placeholder="Short description"></textarea>
+        <button id="addProd" class="btn">Add Product</button>
+        <button id="seedData" class="linklike">Seed Sample Data</button>
+      </div>
+
+      <label class="muted">Product List</label>
+      <div id="productList" class="product-list"></div>
+
+      <label class="muted">Simulation controls</label>
+      <input id="days" value="30" />
+      <select id="metricAgg">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+      </select>
+      <button id="simulate" class="btn">Simulate Campaign</button>
+      <button id="clearData" class="linklike">Clear Data</button>
+    </aside>
+
+    <section>
+      <div class="card">
+        <h2 id="selectedTitle">Select a product</h2>
+        <div id="selectedDesc" class="muted">Product description will appear here</div>
+        <input id="multiplier" type="range" min="0.5" max="3" step="0.1" value="1" />
+        <div class="muted">Multiplier: <span id="multVal">1.0</span>x</div>
+
+        <div class="metrics">
+          <div class="metric"><h3>Impressions</h3><p id="mImpr">—</p></div>
+          <div class="metric"><h3>Clicks</h3><p id="mClicks">—</p></div>
+          <div class="metric"><h3>Conversions</h3><p id="mConv">—</p></div>
+          <div class="metric"><h3>Revenue</h3><p id="mRev">—</p></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <canvas id="trendChart"></canvas>
+        <button id="forecastBtn" class="btn">Run Forecast</button>
+        <div id="insights" class="muted">No data yet.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
